@@ -74,6 +74,7 @@ var trap = function(height) {
     return ans;
 }
 
+// 双指针方式
 var trap = function(height) {
 
 }
