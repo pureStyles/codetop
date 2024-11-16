@@ -11,9 +11,6 @@ var minSubArrayLen = function(target, nums) {
                 ans = j - i + 1;
                 break;
             }
-            if (sum > target) {
-                break;
-            }
             j ++;
         }
     }
@@ -27,4 +24,21 @@ const target = 11;
 const ans = minSubArrayLen(target, nums);
 console.log(ans);
 
+
+var minSubArrayLen = function(target, nums) {
+    let ans = Number.MAX_VALUE;
+    let left = 0, right = 0;
+    const len = nums.length;
+    let sum = 0;
+    while(right < len) {
+        sum += nums[right];
+        while(sum >= target) {
+            ans = Math.min(ans, right - left + 1);
+            sum = sum - nums[left];
+            left ++;
+        }
+        right ++;
+    }
+    return ans === Number.MAX_VALUE ? 0 : ans;
+}
 
