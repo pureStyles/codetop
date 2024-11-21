@@ -55,7 +55,7 @@ var reverseKGroup = function(head, k) {
         const temp = pre.next;
         pre.next = tail;
         pre = temp;
-        cur = nextGroup
+        cur = nextGroup;
     }
     return dummy.next;
 }
