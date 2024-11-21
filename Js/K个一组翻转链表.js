@@ -25,3 +25,37 @@ var reverseKGroup = function(head, k) {
     }
     return dummy.next;
 }
+
+// 使用尾插发
+
+var reverseKGroup = function(head, k) {
+    const dummy = new ListNode(-100);
+    dummy.next = head;
+    let cur = head;
+    // 前驱节点
+    let pre = dummy;
+    while(true) {
+        let tail = pre;
+        for(let i = 0; i < k; i++) {
+            tail = tail.next;
+            if (tail === null) {
+                return dummy.next;
+            }
+        }
+        const nextGroup = tail.next;
+        let suc = nextGroup;
+        // 反转当前组
+        while(cur !== nextGroup) {
+            const temp = cur.next;
+            cur.next = suc;
+            suc = cur;
+            cur = temp;
+        }
+        // 需要保存当前组的头结点（只会就会变成下一组的头结点啦）
+        const temp = pre.next;
+        pre.next = tail;
+        pre = temp;
+        cur = nextGroup;
+    }
+    return dummy.next;
+}
