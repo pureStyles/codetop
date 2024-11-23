@@ -47,3 +47,21 @@ function levelOrder(root) {
     }
     return ans;
 }
+
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+    return dfs(root, root);
+};
+
+function dfs(l1, l2) {
+    if (l1 === null && l2 === null) {
+        return true;
+    }
+    if (l1 === null || l2 === null) {
+        return false;
+    }
+    return (l1.val === l1.val) && dfs(l1.left, l2.right) && dfs(l1.right, l2.left);
+}
