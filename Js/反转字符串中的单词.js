@@ -22,3 +22,30 @@ var reverseWords = function(s) {
     }
     return res.join(' ');
 };
+
+// 将www.kuaishou.com转换为com.kuaishou.www
+
+var reverseDomain = function(s) {
+    // 去除两端的空格
+    const str = s.trim();
+    const res = [];
+    const len = str.length;
+    let i = len - 1, j = len - 1;
+    while(i >= 0) {
+        while(i >= 0 && str[i] !== '.') {
+            i --;
+        }
+        // str[i] === '.'
+        res.push(str.slice(i + 1, j + 1));
+        while(i >= 0 && str[i] === '.') {
+            i --;
+        }
+        j = i;
+    }
+    return res.join('.');
+}
+
+
+const s = 'www.kuaishou.com';
+const ans = reverseDomain(s);
+console.log(ans);
