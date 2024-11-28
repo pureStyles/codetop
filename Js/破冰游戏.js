@@ -18,3 +18,12 @@ var iceBreakingGame = function(num, target) {
     }
     return arr[0];
 };
+
+// 需要优化
+var iceBreakingGame = function(num, target) {
+    if (num === 1) {
+        return 0;
+    }
+    return (target + iceBreakingGame(num - 1, target)) % num;
+}
+
